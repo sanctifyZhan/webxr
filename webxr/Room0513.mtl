@@ -1,0 +1,632 @@
+# 3ds Max Wavefront OBJ Exporter v0.97b - (c)2007 guruware
+# çÏê¨ÇµÇΩÉtÉ@ÉCÉã : 13.05.2021 16:36:33
+
+newmtl FLOOR_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/FLOORVRayCompleteMap.jpg
+	map_Kd ./tex/FLOORVRayCompleteMap.jpg
+
+newmtl wall_out_WALL_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/WALLVRayCompleteMap.jpg
+	map_Kd ./tex/WALLVRayCompleteMap.jpg
+
+newmtl kit_tana_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/kit_tanaVRayCompleteMap.jpg
+	map_Kd ./tex/kit_tanaVRayCompleteMap.jpg
+
+newmtl Door_waku_01_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Door_waku_01VRayCompleteMap.jpg
+	map_Kd ./tex/Door_waku_01VRayCompleteMap.jpg
+
+newmtl Door_waku_002_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Door_waku_002VRayCompleteMap.jpg
+	map_Kd ./tex/Door_waku_002VRayCompleteMap.jpg
+
+newmtl Door_waku_003_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Door_waku_003VRayCompleteMap.jpg
+	map_Kd ./tex/Door_waku_003VRayCompleteMap.jpg
+
+newmtl Door_waku_004_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Door_waku_004VRayCompleteMap.jpg
+	map_Kd ./tex/Door_waku_004VRayCompleteMap.jpg
+
+newmtl Door_waku_005_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Door_waku_005VRayCompleteMap.jpg
+	map_Kd ./tex/Door_waku_005VRayCompleteMap.jpg
+
+newmtl Door_waku_006_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Door_waku_006VRayCompleteMap.jpg
+	map_Kd ./tex/Door_waku_006VRayCompleteMap.jpg
+
+newmtl ceiling_fan_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/ceiling_fanVRayCompleteMap.jpg
+	map_Kd ./tex/ceiling_fanVRayCompleteMap.jpg
+
+newmtl desk_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/deskVRayCompleteMap.jpg
+	map_Kd ./tex/deskVRayCompleteMap.jpg
+
+newmtl desk_chair_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/desk_chairVRayCompleteMap.jpg
+	map_Kd ./tex/desk_chairVRayCompleteMap.jpg
+
+newmtl desk_lamp_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/desk_lampVRayCompleteMap.jpg
+	map_Kd ./tex/desk_lampVRayCompleteMap.jpg
+
+newmtl compute_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/computeVRayCompleteMap.jpg
+	map_Kd ./tex/computeVRayCompleteMap.jpg
+
+newmtl door_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/doorVRayCompleteMap.jpg
+	map_Kd ./tex/doorVRayCompleteMap.jpg
+
+newmtl dresser_left_side_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/dresser_left_sideVRayCompleteMap.jpg
+	map_Kd ./tex/dresser_left_sideVRayCompleteMap.jpg
+
+newmtl kitchen_sink_stopper_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/kitchen_sink_stopperVRayCompleteMap.jpg
+	map_Kd ./tex/kitchen_sink_stopperVRayCompleteMap.jpg
+
+newmtl lounge_chair_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/lounge_chairVRayCompleteMap.jpg
+	map_Kd ./tex/lounge_chairVRayCompleteMap.jpg
+
+newmtl refrigerator_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/refrigeratorVRayCompleteMap.jpg
+	map_Kd ./tex/refrigeratorVRayCompleteMap.jpg
+
+newmtl standing_lamp_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/standing_lampVRayCompleteMap.jpg
+	map_Kd ./tex/standing_lampVRayCompleteMap.jpg
+
+newmtl DESK_set_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/DESK_setVRayCompleteMap.jpg
+	map_Kd ./tex/DESK_setVRayCompleteMap.jpg
+
+newmtl Chair002_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Chair002VRayCompleteMap.jpg
+	map_Kd ./tex/Chair002VRayCompleteMap.jpg
+
+newmtl Chair003_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Chair003VRayCompleteMap.jpg
+	map_Kd ./tex/Chair003VRayCompleteMap.jpg
+
+newmtl cactus_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/cactusVRayCompleteMap.jpg
+	map_Kd ./tex/cactusVRayCompleteMap.jpg
+
+newmtl toilet_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/toiletVRayCompleteMap.jpg
+	map_Kd ./tex/toiletVRayCompleteMap.jpg
+
+newmtl window001_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/window001VRayCompleteMap.jpg
+	map_Kd ./tex/window001VRayCompleteMap.jpg
+
+newmtl TV_joy_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/TV_joyVRayCompleteMap.jpg
+	map_Kd ./tex/TV_joyVRayCompleteMap.jpg
+
+newmtl TV_cont_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/TV_contVRayCompleteMap.jpg
+	map_Kd ./tex/TV_contVRayCompleteMap.jpg
+
+newmtl speaker_speaker001_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/speakerVRayCompleteMap.jpg
+	map_Kd ./tex/speakerVRayCompleteMap.jpg
+
+newmtl entertainment_system_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/entertainment_systemVRayCompleteMap.jpg
+	map_Kd ./tex/entertainment_systemVRayCompleteMap.jpg
+
+newmtl couch_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/couchVRayCompleteMap.jpg
+	map_Kd ./tex/couchVRayCompleteMap.jpg
+
+newmtl TV_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/TVVRayCompleteMap.jpg
+	map_Kd ./tex/TVVRayCompleteMap.jpg
+
+newmtl door001_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 0.920000 0.850000 0.580000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/door001VRayCompleteMap.jpg
+	map_Kd ./tex/door001VRayCompleteMap.jpg
+
+newmtl door002_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/door002VRayCompleteMap.jpg
+	map_Kd ./tex/door002VRayCompleteMap.jpg
+
+newmtl door003_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/door003VRayCompleteMap.jpg
+	map_Kd ./tex/door003VRayCompleteMap.jpg
+
+newmtl window002_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/window002VRayCompleteMap.jpg
+	map_Kd ./tex/window002VRayCompleteMap.jpg
+
+newmtl door004_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/door004VRayCompleteMap.jpg
+	map_Kd ./tex/door004VRayCompleteMap.jpg
+
+newmtl table_lamp_table_lamp001_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/table_lampVRayCompleteMap.jpg
+	map_Kd ./tex/table_lampVRayCompleteMap.jpg
+
+newmtl picture_frame_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/picture_frameVRayCompleteMap.jpg
+	map_Kd ./tex/picture_frameVRayCompleteMap.jpg
+
+newmtl mixer_wisk_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/mixer_wiskVRayCompleteMap.jpg
+	map_Kd ./tex/mixer_wiskVRayCompleteMap.jpg
+
+newmtl book_shelf_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/book_shelfVRayCompleteMap.jpg
+	map_Kd ./tex/book_shelfVRayCompleteMap.jpg
+
+newmtl nightstand_nightstand001_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/nightstandVRayCompleteMap.jpg
+	map_Kd ./tex/nightstandVRayCompleteMap.jpg
+
+newmtl bed_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/bedVRayCompleteMap.jpg
+	map_Kd ./tex/bedVRayCompleteMap.jpg
+
+newmtl coffee_table_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/coffee_tableVRayCompleteMap.jpg
+	map_Kd ./tex/coffee_tableVRayCompleteMap.jpg
+
+newmtl Chair004_baked_white
+	Ns 10.000000
+	Ni 1.500000
+	d 1.000000
+	Tr 0.000000
+	Tf 1.000000 1.000000 1.000000 
+	illum 2
+	Ka 0.588000 0.588000 0.588000
+	Kd 1.000000 1.000000 1.000000 
+	Ks 0.000000 0.000000 0.000000
+	Ke 0.000000 0.000000 0.000000
+	map_Ka ./tex/Chair004VRayCompleteMap.jpg
+	map_Kd ./tex/Chair004VRayCompleteMap.jpg

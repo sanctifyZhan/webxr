@@ -1,0 +1,698 @@
+﻿<html>
+
+<head>
+	<!-- Component (includes A-Frame core) -->
+	<title>WebXR検証</title>
+	<script src="https://unpkg.com/aframe-animation-component@^5.1.2/dist/aframe-animation-component.min.js"></script>
+
+	<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+	<script src="https://github.com/tweenjs/tween.js"></script>
+	<script
+		src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+	<script src="https://unpkg.com/aframe-extras.ocean@%5E3.5.x/dist/aframe-extras.ocean.min.js"></script>
+	<script src="https://unpkg.com/aframe-gradient-sky@1.2.0/dist/gradientsky.min.js"></script>
+	<script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
+	<script src="https://unpkg.com/aframe-event-set-component@4.2.1/dist/aframe-event-set-component.min.js"></script>
+	<script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+	<script
+		src="https://rawcdn.githack.com/elbobo/aframe-animation-toggle-component/7ef92afbc8b16ad34c1689945ff9f46c570be2d6/dist/aframe-animation-toggle-component.js"></script>
+	<script src="https://www.lokeldigital.com/shared-code/a-frame/onclick.js"></script>
+	<script
+		src="https://rawgit.com/fernandojsg/aframe-teleport-controls/master/dist/aframe-teleport-controls.min.js"></script>
+	<script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+	<script src="aframe-cursor-teleport-component.min.js"></script>
+	<script src="https://unpkg.com/aframe-template-component@3.x.x/dist/aframe-template-component.min.js"></script>
+	<script src="https://unpkg.com/aframe-layout-component@3.x.x/dist/aframe-layout-component.min.js"></script>
+	<script src="https://unpkg.com/aframe-proxy-event-component/dist/aframe-proxy-event-component.min.js"></script>
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	<script src="dist/aframe-no-click-look-controls.min.js"></script>
+	<link rel="stylesheet" href="styles.css">
+	<script src="bubble.js"></script>
+
+	<script src="https://unpkg.com/aframe-orbit-controls@1.2.0/dist/aframe-orbit-controls.min.js"></script>
+	<script src="https://unpkg.com/aframe-supercraft-loader@1.1.3/dist/aframe-supercraft-loader.js"></script>
+
+
+	<!-- 	
+	<script>
+		
+		function objectToPos(posObject) {
+			return posObject.x + " " + posObject.y + " " + posObject.z
+		}
+		
+		function clickHandler(target) {
+			let cameraRig = document.querySelector('#camera-rig')
+			let targetPos = objectToPos(target.getAttribute('position'))
+			let camPos = objectToPos(cameraRig.getAttribute('position'))
+			cameraRig.setAttribute('animation', `property:position;from:${camPos};to:${targetPos};dur:700`)
+		}
+
+		function registerHandlerForClick(target){
+			target.addEventListener('click',function(){
+				clickHandler(target)
+			})
+		}
+
+		function setupHandlers(){
+			let targetList = querySelectorAll('.moveTarget')
+			let index = 0
+			while (index<targetList.length){
+				registerHandlerForClick(targetList[index])
+				index = index + 1
+			}
+		}
+
+		window.onload = setupHandlers
+	</script> -->
+	<script>
+
+		AFRAME.registerComponent('main',
+			{
+
+				init: function () {
+					var self = this;
+					$('.hotspot').attr('visible', false);
+					$('.paint-menu').attr('visible', false);
+					$('.open-anim-help').attr('visible', false);
+					toggleVR(false);
+					self.generalListeners();
+					//$('.opt1').children('.paint').addClass('selected'); // Flag this element as selected for further reference
+					$('.opt1').children('.paint').addClass('selected'); // Flag this element as selected for further reference
+					$('.opt1').children('a-ring')[0].setAttribute('material', 'color:#000000');
+					$('.opt2').children('a-ring')[0].setAttribute('material', 'color:#000000');
+					$('.opt3').children('a-ring')[0].setAttribute('material', 'color:#000000');
+
+					$('.lbc11').children('a-entity').children('a-text')[0].setAttribute('animation', 'property: scale; dur :300; to: 0 0 0');
+				},
+
+				generalListeners: function () {
+
+					var c1 = document.querySelector("#helpsofa");
+					var self = this;
+					$('.restart').click(function () {
+						window.location.reload();
+					});
+					$('.start.btn').click(function () {
+
+					});
+					$('#Sofa').click(function () {
+
+						c1.setAttribute('animation', 'property: scale; dur :300; from: 1 1 1 ;to: 0 0 0');
+						// $('.open-anim-help').attr('visible', false);
+						// c1.setAttribute("position", ' 1 75 -30');
+					});
+				},
+			});
+
+		//function when click start button
+		function myFunction() {
+			$('.overlay').hide();
+			$('.restart').show();
+			$('.hotspot').attr('visible', true);
+			$('.paint-menu').attr('visible', true);
+			$('.open-anim-help').attr('visible', true);
+			toggleVR(true);
+			// var el = document.getElementById('descamera');
+			// el.removeAttribute(camera);
+		}
+
+		$(function () {
+			setTimeout(function () {
+				$('#remoblack').addClass('opaque ');
+				$('#remoblack').addClass('transparent');
+			}, 2000);
+		});
+
+		$(function () {
+			setTimeout(function () {
+				$('.btn.start').html('Start');
+				$('.btn.start').removeClass('inactive');
+			}, 3000);
+		});
+
+			// AFRAME.registerComponent("foo", {
+			// 	init: function () {
+			// 		this.signalName = "signalone";
+			// 		// when the animation is finished, fire the other one
+			// 		this.el.addEventListener("animationcomplete", e => {
+			// 			// wait a while and start the other animation
+			// 			this.signalName = this.signalName == "signalone" ? "signaltwo" :
+			// 				this.signalName == "signaltwo" ? "signalthree" :
+			// 					this.signalName == "signalthree" ? "signal4" : "signalone";
+			// 			setTimeout(e => {
+			// 				this.el.emit(this.signalName)
+			// 			}, 500)
+			// 		})
+			// 		this.el.emit(this.signalName)
+			// 	}
+			// })
+
+	</script>
+
+	<script>
+
+		AFRAME.registerComponent("changeima", {
+			init: function () {
+				var Flg = false;
+				var c1 = document.querySelector("#son");
+
+				this.el.addEventListener('mouseenter', function (evt) {
+					c1.setAttribute("scale", { x: 1.1, y: 1.1, z: 1.1 });
+				});
+				this.el.addEventListener('mouseleave', function (evt) {
+					c1.setAttribute("scale", { x: 1, y: 1, z: 1 });
+				});
+				this.el.addEventListener('click', (e) => {
+					let testbay1 = document.querySelector("#testbay1");
+					let testbay2 = document.querySelector("#testbay2");
+					let testbay3 = document.querySelector("#testbay3");
+
+					if (Flg = !Flg) {
+						const son = document.getElementById("son");
+						var elements = document.getElementsByClassName("cc");
+
+						// let cylinder = document.querySelector("#changeia");	 0.327 1.510 -0.440		
+
+						if ($('#son').hasClass('thungson')) {
+
+
+
+							son.classList.add('thungx');
+							son.classList.remove('thungson');
+							this.el.querySelector('a-image').setAttribute('src', 'src/assets/images/close-2.png');
+							testbay1.setAttribute('animation', 'property: position;dur :300; to: 0 0.30 0');
+							testbay2.setAttribute('animation', 'property: position;dur :300; to: 0.165 0.17 0');
+							testbay3.setAttribute('animation', 'property: position;dur :300; to: -0.175 0.15 0');
+
+							for (var i = 0; i < elements.length; i++) {
+								console.log(elements[i]);
+								elements[i].setAttribute('animation', 'property: scale; dur :300; from: 1 1 1 ;to: 0 0 0');
+								// elements[i].setAttribute('visible', 'false');
+							}
+
+						} else {
+							son.classList.add('thungson');
+							son.classList.remove('thungx');
+							this.el.querySelector('a-image').setAttribute('src', 'src/assets/images/paint.png');
+							testbay1.setAttribute('animation', 'property: position;dur :300; to: 0 0 0');
+							testbay2.setAttribute('animation', 'property: position;dur :300; to: 0 0 0');
+							testbay3.setAttribute('animation', 'property: position;dur :300; to: 0 0 0');
+
+							for (var i = 0; i < elements.length; i++) {
+								console.log(elements[i]);
+								elements[i].setAttribute('animation', 'property: scale; dur :300; from: 0 0 0 ;to: 1 1 1');
+								// elements[i].setAttribute('visible', 'true');
+							}
+						}
+					}
+				})
+			}
+		});
+
+		AFRAME.registerComponent("foo6", {
+			init: function () {
+				var Flg = false;
+				this.el.addEventListener('click', (e) => {
+
+					if (Flg = !Flg) {
+						let cylinder = document.querySelector("#sofa");
+						// cylinder.setAttribute("as", 'foo9');
+						// cylinder.setAttribute("position", ' 1 0.75 -3');
+						// cylinder.setAttribute("visible", !cylinder.getAttribute("visible"));
+						// cylinder.setAttribute('visible', 'true');
+						// cylinder.setAttribute('animation', 'property: position; to: 0.127 1.410 -0.440');
+						cylinder.setAttribute('material', 'color:#876726');
+					}
+					$('.opt1').children('a-ring')[0].setAttribute('material', 'color:#000000');
+					$('.opt2').children('a-ring')[0].setAttribute('material', 'color:#000000');
+					$('.opt3').children('a-ring')[0].setAttribute('material', 'color:#ffffff');
+				})
+			}
+		});
+		AFRAME.registerComponent("foo5", {
+			init: function () {
+				var Flg = false;
+				this.el.addEventListener('click', (e) => {
+
+					if (Flg = !Flg) {
+						let cylinder = document.querySelector("#sofa");
+						// cylinder.setAttribute("visible", !cylinder.getAttribute("visible"));
+						cylinder.setAttribute('material', 'color:#314554');
+						// $('.opt2').children('a-ring')[0].setAttribute('material', 'color:black');
+						// $('.opt1').children('a-ring')[0].setAttribute('material', 'color:while');
+						// $('.opt3').children('a-ring')[0].setAttribute('material', 'color:while');
+					}
+					$('.opt1').children('a-ring')[0].setAttribute('material', 'color:#000000');
+					$('.opt2').children('a-ring')[0].setAttribute('material', 'color:#ffffff');
+					$('.opt3').children('a-ring')[0].setAttribute('material', 'color:#000000');
+				})
+			}
+		});
+		AFRAME.registerComponent("foo4", {
+			init: function () {
+				var Flg = false;
+				this.el.addEventListener('click', (e) => {
+
+					if (Flg = !Flg) {
+						let cylinder = document.querySelector("#sofa");
+						// cylinder.setAttribute("visible", !cylinder.getAttribute("visible"));
+						cylinder.setAttribute('material', 'color:#46583e');
+						//	$('.opt3').children('a-ring')[0].setAttribute('material', 'color:while');
+						//	$('.opt1').children('a-ring')[0].setAttribute('material', 'color:while');
+						//	$('.opt2').children('a-ring')[0].setAttribute('material', 'color:while');
+					}
+					$('.opt1').children('a-ring')[0].setAttribute('material', 'color:#ffffff');
+					$('.opt2').children('a-ring')[0].setAttribute('material', 'color:#000000');
+					$('.opt3').children('a-ring')[0].setAttribute('material', 'color:#000000');
+				})
+			}
+		});
+
+		AFRAME.registerComponent("cursor-listenerhelp",
+			{
+				init: function () {
+					var c1 = document.querySelector("#helpsofa");
+					this.el.addEventListener('mouseenter', function (evt) {
+						c1.setAttribute("scale", { x: 1.1, y: 1.1, z: 1.1 });
+					});
+					this.el.addEventListener('mouseleave', function (evt) {
+						c1.setAttribute("scale", { x: 1, y: 1, z: 1 });
+					});
+					this.el.addEventListener('click', function (evt) {
+						console.log("click chien ");
+						let cylinder = document.querySelector("#Sofa");
+						// cylinder.setAttribute('animation', 'property: position; to:  -0.5 0 -5.5');
+						cylinder.setAttribute('animation', 'property: position; dir: alternate; dur: 200; easing: easeInSine; loop: 1; to: -0.5 0 -5.5')
+						// $('.open-anim-help').attr('visible', 'false');
+						// $('.open-anim-help').emit('shrink');
+						// $('.open-anim-help').attr('visible', false);
+						// c1.setAttribute("position", ' 1 75 -30');
+						c1.setAttribute('animation', 'property: scale; dur :300; from: 1 1 1 ;to: 0 0 0');
+					});
+				}
+			});
+
+		AFRAME.registerComponent('cursor-listener',
+			{
+				init: function () {
+
+					var hotspots = $('.hotspot');
+					var c1 = document.querySelector("#c1");
+
+					this.el.addEventListener('mouseenter', function (evt) {
+						c1.setAttribute("scale", { x: 1.1, y: 1.1, z: 1.1 });
+					});
+					this.el.addEventListener('mouseleave', function (evt) {
+						c1.setAttribute("scale", { x: 1, y: 1, z: 1 });
+					});
+					var Flg = false;
+
+					this.el.addEventListener('click', function (el, self) {
+
+						if (Flg = !Flg) {
+							const son = document.getElementById("c1");
+							const sumc1 = document.getElementById("sumc1");
+							const lab1 = document.getElementById("lab1");
+							// const sumlbc1 = document.getElementById("sumc1").children('a-ring')[0];
+							// var lbc111 = document.getElementsByClassName("lbc11").children('a-entity').children('a-text')[0]
+
+							const sontext = document.getElementById("sumc1");
+							var sometext = sontext.children[0];
+
+							var overlaps = $('.overlapper');
+							var container = $(el.parentEl).children()[0];
+							var label = $(container).children()[0];
+							var btn = document.querySelector('.vrbtn');
+
+							if ($('#c1').hasClass('c11')) {
+
+								son.classList.add('thungc11');
+								son.classList.remove('c11');
+								btn.setAttribute('src', 'src/assets/images/close-2.png');
+								sumc1.setAttribute('animation', 'property: position;dur :300; to: -0.8 1.7 -2');
+
+								// $('.c11').children('a-ring')[0].setAttribute('animation', 'property: position;dur :300; to: -0.8 1.7 -2');
+
+								var pos = $('#cameraRig').attr('position');
+								// var yaw = $('#camera').attr('pik-look-controls').yaw;
+								// var pitch = $('#camera').attr('pik-look-controls').pitch;
+								var camera = document.getElementById('camera');
+								camera.setAttribute('pik-look-controls', 'yaw', '0');
+								camera.setAttribute('pik-look-controls', 'pitch', '-90');
+								// lab1.style.display="none";
+								// lbc111.setAttribute('animation', 'property: scale; dur :300; to: 1 1 1');
+								$('.lbc11').children('a-entity').children('a-text')[0].setAttribute('animation', 'property: scale; dur :300; to: 1 1 1');
+								// $('.lbc11').children('a-entity').children('a-text')[0].setAttribute('animation', 'property: position;dur :300; to: -1 1.5 -2');
+								sometext.setAttribute('animation', 'property: position;dur :300; to: -0.2 0 0');
+
+								// $('.lbc11').children('a-entity').children('a-text')[0].setAttribute('animation', 'property: scale; dur :300; to: 0 0 0');
+								// $(label).addClass('showing');
+								// label.emit('show');
+								// console.log(pitch);
+								for (var i = 0; i < overlaps.length; i++) {
+
+									if (overlaps[i] != el)
+										overlaps[i + 1].setAttribute('animation', 'property: scale; dur :300; to: 0 0 0');
+								}
+
+							} else {
+								c1.classList.add('c11');
+								c1.classList.remove('thungc11');
+								btn.setAttribute('src', 'src/assets/images/arrow.png');
+								sumc1.setAttribute('animation', 'property: position;dur :300; to: -1 1.5 -2');
+
+								$('.lbc11').children('a-entity').children('a-text')[0].setAttribute('animation', 'property: scale; dur :300; to: 0 0 0');
+								sometext.setAttribute('animation', 'property: position;dur :300; to: 0 0 0');
+
+								for (var i = 0; i < overlaps.length; i++) {
+
+									if (overlaps[i] != el)
+										overlaps[i + 1].setAttribute('animation', 'property: scale; dur :300; to: 1 1 1');
+								}
+							}
+						}
+
+						// for (var i = 0; i < btn.length; i++) {
+						// console.log(btn[i]);
+						// }
+
+					});
+				}
+			});
+
+		AFRAME.registerComponent('cursor-listener2',
+			{
+
+				init: function () {
+					var c2 = document.querySelector("#c2");
+					this.el.addEventListener('mouseenter', function (evt) {
+						c2.setAttribute("scale", { x: 1.1, y: 1.1, z: 1.1 });
+					});
+					this.el.addEventListener('mouseleave', function (evt) {
+						c2.setAttribute("scale", { x: 1, y: 1, z: 1 });
+					});
+					this.el.addEventListener('click', function (el, self) {
+					});
+				}
+			});
+
+		function toggleVR(showVR) {
+			var scene = document.querySelector('#vr-scene');
+
+			if (showVR) {
+				console.log("enabled");
+				scene.setAttribute('vr-mode-ui', 'enabled: true');
+			} else {
+				console.log("disabled");
+				scene.setAttribute('vr-mode-ui', 'enabled: false');
+			}
+		}
+
+		AFRAME.registerComponent("foo5", {
+			init: function () {
+				var Flg = false;
+				this.el.addEventListener('click', (e) => {
+
+					if (Flg = !Flg) {
+						let cylinder = document.querySelector("#sofa");
+						// cylinder.setAttribute("visible", !cylinder.getAttribute("visible"));
+						cylinder.setAttribute('material', 'color:#314554');
+					}
+					//set color for three paint
+					$('.opt1').children('a-ring')[0].setAttribute('material', 'color:#000000');
+					$('.opt2').children('a-ring')[0].setAttribute('material', 'color:#ffffff');
+					$('.opt3').children('a-ring')[0].setAttribute('material', 'color:#000000');
+				})
+			}
+		});
+
+	</script>
+
+	<script id="hotspot" type="text/html">
+			<a-entity class="hotspot raycaster no-teleport" scale="2 2 2" material="shader:flat; opacity:0.25; side:back; color:white;" geometry="primitive: sphere; radius:0.06;">
+				<a-entity material="shader:flat; opacity:0.5; color:black; side:back;" geometry="primitive: sphere; radius:0.05;"></a-entity>
+				<a-entity material="shader:flat; color:white;" geometry="primitive: sphere; radius:0.03;"></a-entity>
+			</a-entity>
+		</script>
+	<script id="colour" type="text/html">
+	<a-ring material="color:black;depthTest=true;" radius-inner="0.05" radius-outer="0.055" class='paint-ring' position='0 0 -0.1'></a-ring>
+	<a-circle material="${material}" radius="0.05" class='vrbtn paint raycaster no-teleport' position='0 0 -0.1'></a-circle>
+</script>
+
+	<script id="imagebtn" type="text/html">
+		<a-image class="main vrbtn raycaster no-teleport clickable" height="0.2" width="0.2" src=${src}></a-image>
+		<a-ring material="color: #cebb6b;depthTest:${depthtest};" radius-inner="0.11" radius-outer="0.13" class='paint-ring' position='0 0 0'></a-ring>
+</script>
+
+	<script id="label" type="text/html">
+	<a-entity info-bubble="height:0;width:0;" scale="1 1 1">			
+		<a-text align="center" color="black" width="0.6" line-height="55" wrap-count="22" position="0 -0.17 0.01" value=${value}></a-text>
+	</a-entity>	
+	</script>
+
+</head>
+
+<body style="overflow:hidden;">
+	<div class="canvas-container">
+		<a-scene main cursor="rayOrigin: mouse" raycaster="objects: .clickable" renderer="colorManagement: true;"
+			embedded arjs='debugUIEnabled:false; trackingMethod: best;'
+			device-orientation-permission-ui="enabled: false" id="vr-scene" vr-mode-ui="enabled: false"
+			loading-screen="enabled:false" precision: mediump>
+			<a-assets>
+				<a-mixin id="campos" position=""></a-mixin>
+				<a-mixin id="target" onclick="clickHandler"></a-mixin>
+				<a-asset-item id="Room-obj" src="Room0513.obj"></a-asset-item>
+				<a-asset-item id="Room-mtl" src="Room0513.mtl"></a-asset-item>
+				<a-asset-item id="sofa-obj" src="sofa.obj"></a-asset-item>
+				<a-asset-item id="sofa-mtl" src="sofa.mtl"></a-asset-item>
+			</a-assets>
+
+			<a-entity id="hotspot-container">
+
+				<a-entity class="hotspot no-teleport cc moveTarget" id="sumc1" position="-1 1.5 -2" look-at="[camera]">
+					<a-entity id="lab1" template="src: #label" class="lbc11"
+						data-value="'Crosstown Undermount Stainless Steel'"></a-entity>
+
+					<a-entity id="c1" cursor-listener class="moveTarget button overlapper c11 c111"
+						template="src: #imagebtn" data-depthtest="true" data-src="src/assets/images/arrow.png"
+						data-target='sink'></a-entity>
+				</a-entity>
+
+				<a-entity class="hotspot no-teleport cc moveTarget" position="-2.28 2.725 1.0" look-at="[camera]">
+					<a-entity template="src: #label" data-value="'Classical astragal and lambs tongue'"></a-entity>
+					<a-entity id="c7" cursor-listener7 class="button overlapper moveTarget" template="src: #imagebtn"
+						data-depthtest="true" data-src="src/assets/images/arrow.png" data-target='cornice'></a-entity>
+				</a-entity>
+				
+				<a-entity class="hotspot no-teleport cc moveTarget" position="1.78 2.121 -3.634" look-at="[camera]">
+					<a-entity template="src: #label" data-value="'Turner Door Style'"></a-entity>
+					<a-entity id="c2" cursor-listener2 class="button overlapper" template="src: #imagebtn"
+						data-depthtest="true" data-src="src/assets/images/arrow.png" data-target='unit-door'>
+					</a-entity>
+				</a-entity>
+
+				<a-entity class="hotspot no-teleport cc" position="0.361 1.041 4.384" look-at="[camera]">
+					<a-entity template="src: #label" data-value="'Dorset Natural Solid Oak Dining Table with 6 Chairs'">
+					</a-entity>
+					<a-entity id="c3" cursor-listener3 class="button overlapper" template="src: #imagebtn"
+						data-depthtest="true" data-src="src/assets/images/arrow.png" data-target='table'></a-entity>
+				</a-entity>
+
+				<a-entity class="hotspot no-teleport cc" position="0.288 1.04 -2.574" look-at="[camera]">
+					<a-entity template="src: #label" data-value="'Dual Fuel Range with Charbroiler and Fench Top'">
+					</a-entity>
+					<a-entity id="c4" cursor-listener4 class="button overlapper" template="src: #imagebtn"
+						data-depthtest="true" data-src="src/assets/images/arrow.png" data-target='cooker'></a-entity>
+				</a-entity>
+
+				<a-entity class="hotspot no-teleport cc" position="0.563 1.294 2.267" look-at="[camera]">
+					<a-entity template="src: #label" data-value="'Worthington Bar Stool'"></a-entity>
+					<a-entity id="c5" cursor-listener5 class="button overlapper" template="src: #imagebtn"
+						data-depthtest="true" data-src="src/assets/images/arrow.png" data-target='stool'></a-entity>
+				</a-entity>
+
+				<a-entity class="hotspot no-teleport cc" position="0.048 1.364 -0.979" look-at="[camera]">
+					<a-entity template="src: #label" data-value="'Glenshire Single-Handle Pull-Down'"></a-entity>
+					<a-entity id="c6" cursor-listener6 class="button overlapper" template="src: #imagebtn"
+						data-depthtest="true" data-src="src/assets/images/arrow.png" data-target='tap'></a-entity>
+				</a-entity>
+
+			</a-entity>
+
+			<a-entity id="helpsofa" cursor-listenerhelp class="open-anim-help no-teleport" template="src: #imagebtn"
+				data-depthtest="true" position="0.3 0.5 -2" data-src="src/assets/images/click.png" look-at="[camera]"
+				visible="true">
+			</a-entity>
+
+			<a-entity look-at="[camera]" position="-0.7 1.210 -3.2">
+				<a-entity id="son" class="paint-menu overlapper no-teleport thungson"
+					data-src="src/assets/images/paint.png" template="src: #imagebtn" data-depthtest="true" changeima>
+				</a-entity>
+
+				<a-entity id="testbay1" class="paint-menu overlapper opt1 clickable" template="src: #colour"
+					data-material="color: #46583e" foo4>
+				</a-entity>
+
+				<a-entity id="testbay2" class="paint-menu overlapper opt2 clickable" template="src: #colour"
+					data-material="color: #314554" foo5>
+				</a-entity>
+
+				<a-entity id="testbay3" class="paint-menu overlapper opt3 clickable" template="src: #colour"
+					data-material="color: #876726" foo6>
+				</a-entity>
+
+			</a-entity>
+
+			<!--Camera auto run when start web-->
+			<!-- <a-entity id="descamera1"
+					animation__first="property: position; dur: 800; easing: linear; from: 4 4 0; to: 4 1.6 0; startEvents: signalone;"
+					animation__second="property: rotation; from:0 0 0; to: 0 70 0; dur: 1000; startEvents: signaltwo;"
+					animation__three="property: position; dur: 800; easing: linear; from: 4 1 0; to: 4 4 0; startEvents: signalthree;"
+					animation__4="property: position; dur: 1000; easing: linear; from:0 0 0; to: 0 -10 2;startEvents: signal4"
+					foo>
+					rotation="45 90 180" // cai nay dung de nhin tu tren xuong duoi	
+					 <a-entity id="descamera" camera></a-entity> 	
+				</a-entity> -->
+
+			<a-plane class="clickable" position="-1 1 -5" height="0.2" width="0.4" color="#fc9630" look-at="[camera]"
+				event-set__enter="_event: click; _target: #hidehide;property:visible; visible:true"
+				event-set__enterb="_event: click; _target: #hidehideb;property:visible; visible:true"
+				event-set__enterp="_event: click; _target: #hidehidep;property:visible; visible:true"
+				event-set__enterr="_event: click; _target: #hidehider;property:visible; visible:true"
+				text="align: center ; value: Color; color:while; width: 2.5;">
+			</a-plane>
+
+			<a-text class="clickable" id="hidehide" height="1" width="1" value="OFF" align="center" color="#FFF"
+				visible="false" position="-0.7 1 -5" look-at="[camera]"
+				geometry="primitive: plane; width: 0.1; height:0.1" material="color: #333"
+				animation__position="property: visible; from: true; to: false; startEvents: click"
+				event-set__enter="_event: click; dir:alternate; _target: #hidehideb; visible:false"
+				event-set__enter2="_event: click; dir:alternate; _target: #hidehidep; visible:false"
+				event-set__enter3="_event: click; dir:alternate; _target: #hidehider; visible:false">
+			</a-text>
+
+			<a-plane class="clickable" id="hidehideb" position="-1.5 1.5 -5" height="0.2" width="0.4" color="#763791"
+				visible="false" look-at="[camera]"
+				event-set__enter="_event: click; dir:alternate; _target: #Sofa; material:color:#763791;"
+				animation__position="property: visible; from: true; to: false; startEvents: click"
+				event-set__enterp="_event: click; _target: #hidehidep; visible:false"
+				event-set__enterr="_event: click; _target: #hidehider; visible:false"
+				event-set__enterh="_event: click; _target: #hidehide; visible:false"
+				text="align: center ; value: PURPLE; color:while; width: 2.5;">
+
+				<a-text id="cylinderText" value="This is a cylinder" align="center" color="#FFF" visible="false"
+					position="-3 2 0" geometry="primitive: plane; width: 1.75" material="color: #333">
+				</a-text>
+			</a-plane>
+
+			<a-plane class="clickable" id="hidehidep" position="-1 1.5 -5" height="0.2" width="0.4" color="#fc9630"
+				visible="false" look-at="[camera]"
+				event-set__enter="_event: click; dir:alternate; _target: #Sofa; material:color:#fc9630;"
+				animation__position="property: visible; from: true; to: false; startEvents: click"
+				event-set__enterb="_event: click; _target: #hidehideb; visible:false"
+				event-set__enterr="_event: click; _target: #hidehider; visible:false"
+				event-set__enterh="_event: click; _target: #hidehide; visible:false"
+				text="align: center ; value: ORANGE; color:while; width: 2.5;">
+
+				<a-text id="cylinderText" value="This is a cylinder" align="center" color="#FFF" visible="false"
+					position="-3 2 0" geometry="primitive: plane; width: 1.75" material="color: #333">
+				</a-text>
+			</a-plane>
+
+			<a-plane class="clickable" id="hidehider" position="-0.5 1.5 -5" height="0.2" width="0.4" color="red"
+				visible="false" look-at="[camera]"
+				event-set__enter="_event: click; dir:alternate; _target: #Sofa; material:color:red"
+				animation__position="property: visible; from: true; to: false; startEvents: click"
+				event-set__enterp="_event: click; _target: #hidehidep; visible:false"
+				event-set__enterb="_event: click; _target: #hidehideb; visible:false"
+				event-set__enterh="_event: click; _target: #hidehide; visible:false"
+				text="align: center; value: RED; color:while; width: 2.5;">
+
+				<a-text id="cylinderText" value="This is a cylinder" align="center" color="#FFF" visible="true"
+					position="-1 1-0" geometry="primitive: plane; width: 1.75" material="color: #333">
+				</a-text>
+			</a-plane>
+
+			<a-entity id="cameraRig" mixin="campos" position="-1.5 0 1" rotation="0 -40 0"
+				class="camera-parent teleport-object"
+				cursor-teleport="cameraRig: #cameraRig; cameraHead: #camera; collisionEntities: .collision; ignoreEntities: .clickable ;">
+
+				<a-camera id="camera" wasd-controls="enabled:false; " camera="active: true ; dur:3000" fov="60"
+					mouse-cursor look-controls="reverseMouseDrag: true; acceleration: 100;">
+					<a-animation attribute='pik-look-controls.yaw' dur="1000" begin="yawToStart" to="50"></a-animation>
+					<a-animation attribute='pik-look-controls.pitch' dur="1000" begin="pitchToStart" to="-10">
+					</a-animation>
+				</a-camera>
+				<!-- test left and right hand remote
+
+					<a-entity laser-controls="hand: left" raycaster="objects: .clickable; far: 100"	line="color: #000000; opacity: 1"
+					  teleport-controls="
+					  collisionEntities: .collision;
+					  cameraRig: #cameraRig;
+					  teleportOrigin: #camera;
+					  cursorHidden:true">
+					</a-entity>
+
+					<a-entity laser-controls="hand: right" raycaster="objects: .clickable" line="color: #000000; opacity: 1"
+						teleport-controls="
+					  collisionEntities: .collision;
+					  cameraRig: #cameraRig;
+					  teleportOrigin: #camera;
+					  cursorHidden:true">
+					</a-entity>
+					!-->
+			</a-entity>
+
+			<!-- test camera animation when clickobject mixin
+				 <a-entity id="camera-rig" mixin="campos" position="-0.5 1.3 0">
+						<a-camera id="camera" mouse-cursor camera="active: true" fov="70">
+						</a-camera>
+					</a-entity> -->
+
+			<!--Load room with Room-obj and Room-mtl-->
+			<a-entity id="Room" obj-model="obj:#Room-obj; mtl:#Room-mtl;" position="0 0 0" scale=".01 .01 .01"
+				rotation="0 180 0" shadow="receive: true; cast: true">
+			</a-entity>
+			<!--animation of sofa click-->
+			<a-entity class="clickable animated-model no-teleport" id="Sofa" obj-model="obj:#sofa-obj; mtl:#sofa-mtl;"
+				position="-0.7 0 -5.5" scale=".006 .006 .006" rotation="0 100 0"
+				animation__position="property: position; from: -0.7 0 -5.5; to: 2 0 -5.5; startEvents: click"
+				animation__rotation="property: rotation; from: 0 100 0; to: 0 165 0; startEvents: click"
+				animation-toggle="names: animation__position, animation__rotation">
+			</a-entity>
+
+			<!---->
+			<a-entity class="cursor" cursor="near: 0.1; far: 60; rayOrigin: mouse;"
+				raycaster="objects: .raycaster, .animated-model; recursive: true; near: 0.1; far:10;"
+				position='0 0 -0.1'>
+			</a-entity>
+
+			<!--create collision for cursor, (move by click)-->
+			<a-entity class="collision" position="0.2 -.01 0" class="cursor-listener1"
+				geometry="primitive: box; width: 5.5; height: .1; depth: 11" material="color: red;opacity:0">
+			</a-entity>
+
+		</a-scene>
+
+		<button class="restart" onclick="myFunctionre()">
+			<img src="src/assets/images/restart.png">
+		</button>
+	</div>
+
+	<div id="remoblack" class="overlay">
+		<div class="module intro">
+			<div class="content">
+				<div class="table">
+					<div class="intro table-cell">
+						<p style="margin-bottom: 1em;">WebXR検証-a-frameサンプルページと同じ動作内容の実装検証</p>
+						<button onclick="myFunction()" class="btn start inactive">Loading</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
